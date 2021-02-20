@@ -1,13 +1,22 @@
 yo yo yo, what's cooking. to get started, clone this repo, cd into the folder locally, then install all the
 necessary packages with either `npm i` or `yarn` (depending on which you have downloaded).
 
-File structure:
-code should be in src/
+
+### File structure:
+code should generally be in src/
 
 components should be in src/components
 
+
 create a folder for each component, within which you'll need a `<component-name>.js` and `<component-name>.module.css` file.
 import the css file into your component js file.
+
+
+run `yarn start` or `npm start` to run in dev mode.
+
+
+I've downloaded material-ui and their icons, try looking for their icons to use before downloading other ones probably.
+https://material-ui.com/components/material-icons/
 
 
 # Getting Started with Create React App
