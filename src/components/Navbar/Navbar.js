@@ -52,7 +52,7 @@ export default function Navbar() {
   const { user } = useAuth();
 
   return (
-    <AppBar position="sticky">
+    <AppBar position="sticky" color={"primary"}>
       <Toolbar className={styles.toolbar}>
         <Link component={RouterLink} to='/' color="inherit">Home</Link>
         {user

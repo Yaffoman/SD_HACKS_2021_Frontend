@@ -12,6 +12,7 @@ import Landing from './pages/Landing/Landing';
 import Profile from './pages/Profile/Profile';
 import Navbar from './components/Navbar/Navbar';
 import { Auth } from './components/Auth/Auth';
+import Theme from './components/Theme/Theme';
 
 function Routes() {
   return (
@@ -30,7 +31,9 @@ function App() {
   return (
     <div className={styles.App}>
       <Auth>
-        <Routes />
+        <Theme>
+          <Routes />
+        </Theme>
       </Auth>
     </div>
   );

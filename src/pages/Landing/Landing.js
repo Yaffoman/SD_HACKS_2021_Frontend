@@ -1,23 +1,7 @@
 import React from 'react';
-
-
 import './Landing.css';
-import {Button, Card, CardContent, CardActions, Typography, createMuiTheme, MuiThemeProvider} from '@material-ui/core'
-import background from "./homepage.png"
-import teal from "@material-ui/core/colors/teal";
-import green from "@material-ui/core/colors/green";
-import amber from "@material-ui/core/colors/amber";
-
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: teal[500]
-    },
-    secondary: {
-      main: amber[300]
-    }
-  },
-})
+import {Button, Card, CardContent, CardActions, Typography} from '@material-ui/core'
+import background from "../../assets/images/homepage.png"
 
 
 class Title extends React.Component {
@@ -120,11 +104,9 @@ class Page extends React.Component {
 class Landing extends React.Component {
   render() {
     return (
-        <MuiThemeProvider theme={theme}>
-          <div>
-            <Page/>
-          </div>
-        </MuiThemeProvider>
+      <div>
+        <Page/>
+      </div>
     );
   }
 }
