@@ -4,7 +4,7 @@ import useAuth from '../Auth/Auth';
 import Landing from '../../pages/Landing/Landing';
 
 export default function PrivateRoute({ ...RouteProps }) {
-  const user = useAuth();
+  const { user } = useAuth();
 
   return (
     <>
