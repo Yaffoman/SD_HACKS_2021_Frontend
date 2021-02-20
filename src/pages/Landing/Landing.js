@@ -119,8 +119,7 @@ class Page extends React.Component {
   }
 }
 
-class Landing extends React.Component {
-  render() {
+function Landing() {
     return (
         <MuiThemeProvider theme={theme}>
           <div>
@@ -128,7 +127,6 @@ class Landing extends React.Component {
           </div>
         </MuiThemeProvider>
     );
-  }
 }
 
 
