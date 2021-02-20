@@ -6,7 +6,6 @@ import {Paper, Grid,Button, Card, CardContent, CardActions, Typography, createMu
 import teal from "@material-ui/core/colors/teal";
 import amber from "@material-ui/core/colors/amber";
 import {NativeSelect, InputLabel} from "@material-ui/core";
-import background from "../Landing/homepage.png";
 import Input from "@material-ui/core/Input";
 
 const theme = createMuiTheme({

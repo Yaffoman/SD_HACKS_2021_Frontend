@@ -32,9 +32,7 @@ class SignUp extends React.Component {
 class Login extends React.Component {
   render() {
     return (
-        <><Router>
-            <Link to={'/update'} className={"btn btn-primary"}>Send to update</Link>
-        </Router>
+        <>
           <Button color="primary" variant={"contained"}>
             <b>Login Here</b>
           </Button>

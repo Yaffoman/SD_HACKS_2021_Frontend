@@ -20,9 +20,9 @@ function Routes() {
     <Router>
       <Navbar />
       <Switch>
-        <Route exact path='/landing' component={Update} />
+        <Route exact path='/landing' component={Landing} />
           <PrivateRoute exact path='/profile' component={Profile} />
-          <PrivateRoute exact path='/update' component={Landing} />
+          <PrivateRoute exact path='/update' component={Update} />
         <PrivateRoute path='/' component={Home} />
       </Switch>
     </Router>
