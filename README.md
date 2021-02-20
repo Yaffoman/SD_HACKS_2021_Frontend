@@ -1,3 +1,15 @@
+yo yo yo, what's cooking. to get started, clone this repo, cd into the folder locally, then install all the
+necessary packages with either `npm i` or `yarn` (depending on which you have downloaded).
+
+File structure:
+code should be in src/
+
+components should be in src/components
+
+create a folder for each component, within which you'll need a `<component-name>.js` and `<component-name>.module.css` file.
+import the css file into your component js file.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
