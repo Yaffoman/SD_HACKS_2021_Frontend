@@ -1,13 +1,12 @@
 import React from 'react';
 
-
-import './Landing.css';
+import styles from './Landing.css';
+import { BrowserRouter as Router, Link } from 'react-router-dom'
 import {Button, Card, CardContent, CardActions, Typography, createMuiTheme, MuiThemeProvider} from '@material-ui/core'
 import background from "./homepage.png"
 import teal from "@material-ui/core/colors/teal";
 import green from "@material-ui/core/colors/green";
 import amber from "@material-ui/core/colors/amber";
-
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -44,10 +43,13 @@ class SignUp extends React.Component {
   }
 }
 
+
 class Login extends React.Component {
   render() {
     return (
-        <>
+        <><Router>
+            <Link to={'/update'} className={"btn btn-primary"}>Send to update</Link>
+        </Router>
           <Button color="primary" variant={"contained"}>
             <b>Login Here</b>
           </Button>
@@ -67,7 +69,7 @@ class InfoBoxes extends React.Component {
               <Typography variant={'h5'} color={'textPrimary'}>
                 About Us
               </Typography>
-              <Typography variant={'body'} color={'textSecondary'}>
+              <Typography variant={'body1'} color={'textSecondary'}>
                 Here is some more information with details about carbon emission
               </Typography>
             </CardContent>
@@ -80,7 +82,7 @@ class InfoBoxes extends React.Component {
               <Typography variant={'h5'} color={'textPrimary'}>
                 How can you help?
               </Typography>
-              <Typography variant={'body'} color={'textSecondary'}>
+              <Typography variant={'body1'} color={'textSecondary'}>
                 Here is some more information with details about carbon emission
               </Typography>
             </CardContent>
