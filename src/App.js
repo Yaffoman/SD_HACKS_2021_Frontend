@@ -6,6 +6,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Home from './pages/Home/Home';
 import Landing from './pages/Landing/Landing';
 import Profile from './pages/Profile/Profile';
@@ -18,8 +19,8 @@ function Routes() {
       <Navbar />
       <Switch>
         <Route exact path='/landing' component={Landing} />
-        <Route exact path='/profile' component={Profile} />
-        <Route path='/' component={Home} />
+        <PrivateRoute exact path='/profile' component={Profile} />
+        <PrivateRoute path='/' component={Home} />
       </Switch>
     </Router>
   )

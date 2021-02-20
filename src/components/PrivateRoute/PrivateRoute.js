@@ -1,6 +1,6 @@
-import React from 'React';
+import React from 'react';
 import { Route, Redirect } from "react-router-dom";
-import useAuth from './components/Auth/Auth';
+import useAuth from '../Auth/Auth';
 import Landing from '../../pages/Landing/Landing';
 
 export default function PrivateRoute({ ...RouteProps }) {
