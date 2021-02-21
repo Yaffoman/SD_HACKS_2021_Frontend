@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import { Stepper, Step, StepButton, Typography } from '@material-ui/core';
 import BasicInfo from './BasicInfo';
@@ -31,10 +31,31 @@ export default function Signup() {
   const [store, setStore] = useState({});
   const steps = ["Basic Info", "Transportation", "Food", "Home", "Results"];
 
-  const submit = () => {
-    console.log("waddup dude");
-    console.log()
+  const submit = async () => {
+    const data = await fetch('URL_GOES_HERE', { // TODO replace url here
+      method: "POST",
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      redirect: "follow",
+      referrerPolicy: "no-referrer",
+      body: JSON.stringify(store),
+    }).then((response) => response.json());
   }
+
+  useEffect(() => {
+    if (activeStep === steps.length - 1) {
+      console.log(store);
+      try {
+        submit();
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  }, [activeStep]);
 
   return (
     <>
