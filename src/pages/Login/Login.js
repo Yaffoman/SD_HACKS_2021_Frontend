@@ -79,6 +79,7 @@ function LoginForm() {
             <Field
               component={TextField}
               name="password"
+              type="password"
               label="Password"
               fullWidth
             />
