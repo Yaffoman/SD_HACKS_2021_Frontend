@@ -21,12 +21,13 @@ class SignUp extends React.Component {
   render() {
     return (
         <>
-          <Button color="secondary">
+        <Link component={RouterLink} to='/signup' color="inherit" style={{textDecoration: 'none'}}>
+
+        <Button color="secondary">
             Don't have an account?&ensp;
-            <Link component={RouterLink} to='/signup' color="inherit">
               <b>Signup</b>
-            </Link>
           </Button>
+        </Link>
         </>
     );
   }
