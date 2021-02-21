@@ -58,7 +58,7 @@ function LoginForm() {
               lastName: "Doe",
             });
 
-            history.push("/home");
+            history.push("/");
           } catch (err) {
             console.log(err);
           }

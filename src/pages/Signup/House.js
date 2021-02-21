@@ -2,7 +2,7 @@ import React from "react";
 import { TextField, InputAdornment, Grid, Button } from "@material-ui/core";
 import { Formik, Form, Field } from "formik";
 
-export default function Home({ updateStore, nextStep }) {
+export default function House({ updateStore, nextStep }) {
   return (
     <Grid container direction={"column"} alignItems="center" spacing={2}
       style={{

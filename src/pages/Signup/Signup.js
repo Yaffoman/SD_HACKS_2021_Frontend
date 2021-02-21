@@ -4,7 +4,7 @@ import { Stepper, Step, StepButton, Typography } from '@material-ui/core';
 import BasicInfo from './BasicInfo';
 import Transportation from './Transportation';
 import Food from './Food';
-import Home from './House';
+import House from './House';
 import Results from './Results';
 
 function getStepContent(step, setActiveStep, store, setStore){
@@ -19,7 +19,7 @@ function getStepContent(step, setActiveStep, store, setStore){
     case 2:
       return <Food updateStore={updateStore} nextStep={nextStep}  />;
     case 3:
-      return <Home updateStore={updateStore} nextStep={nextStep} />
+      return <House updateStore={updateStore} nextStep={nextStep} />
     case 4:
       return <Results updateStore={updateStore} nextStep={nextStep}  />;
   }
@@ -29,7 +29,7 @@ function getStepContent(step, setActiveStep, store, setStore){
 export default function Signup() {
   const [activeStep, setActiveStep] = useState(0);
   const [store, setStore] = useState({});
-  const steps = ["Basic Info", "Transportation", "Food", "Home", "Results"];
+  const steps = ["Basic Info", "Transportation", "Food", "House", "Results"];
 
   const submit = async () => {
     const data = await fetch('URL_GOES_HERE', { // TODO replace url here

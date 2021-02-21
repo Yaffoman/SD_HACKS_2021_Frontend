@@ -7,7 +7,7 @@ import {
   Link
 } from "react-router-dom";
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import Home from './pages/Home/Home';
+import Dashboard from './pages/Dashboard/Dashboard';
 import Landing from './pages/Landing/Landing';
 import Update from './pages/Update/Update'
 import Profile from './pages/Profile/Profile';
@@ -27,7 +27,7 @@ function Routes() {
         <Route exact path='/signup' component={Signup} />
         <PrivateRoute exact path='/profile' component={Profile} />
         <PrivateRoute exact path='/update' component={Update} />
-        <PrivateRoute path='/' component={Home} />
+        <PrivateRoute path='/' component={Dashboard} />
       </Switch>
     </Router>
   )

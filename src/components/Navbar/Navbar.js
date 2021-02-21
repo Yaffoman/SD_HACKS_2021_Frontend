@@ -54,9 +54,10 @@ export default function Navbar() {
   return (
     <AppBar position="sticky" color={"primary"}>
       <Toolbar className={styles.toolbar}>
-        <Link component={RouterLink} to='/' color="inherit">Home</Link>
+        <Link component={RouterLink} to='/' color="inherit">Dashboard</Link>
         {user
           ? <ProfileMenu />
+          // TODO maybe user instead: ? <Button color="inherit" onClick={() => setUser(null)}>Logout</Button>
           : <Link component={RouterLink} to='/login' color="inherit">Login</Link>
         }
       </Toolbar>
