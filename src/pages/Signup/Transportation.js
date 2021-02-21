@@ -53,6 +53,8 @@ class GridFragment extends React.Component {
                         }}/>
                     </Grid>
                     <Grid item>
+                        <Typography variant={"body1"}>Carpool?</Typography>
+
                         <Checkbox
                             checked={this.state.checked}
                             onChange={(event) => {
@@ -64,7 +66,6 @@ class GridFragment extends React.Component {
                             color="primary"
                         />
                     </Grid>
-
                 </Grid>
 
                 <Grid item container direction={"row"} spacing={5} alignItems={"center"} justify={"center"}>
