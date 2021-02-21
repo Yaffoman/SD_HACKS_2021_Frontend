@@ -34,9 +34,8 @@ export default function Home({ updateStore, nextStep }) {
               name="occupants"
               type="number"
               label="Occupants"
-              startAdornment={
-                <InputAdornment position="start">$</InputAdornment>
-              }
+
+
               fullWidth
             />
 
@@ -45,9 +44,9 @@ export default function Home({ updateStore, nextStep }) {
               name="electricity"
               type="number"
               label="Electricity Bill in Dollars"
-              startAdornment={
-                <InputAdornment position="start">$</InputAdornment>
-              }
+              InputProps={{startAdornment:
+                      <InputAdornment position="start">$</InputAdornment>
+              }}
               fullWidth
             />
 
@@ -56,9 +55,9 @@ export default function Home({ updateStore, nextStep }) {
               name="naturalGas"
               type="number"
               label="Natural Gas"
-              startAdornment={
-                <InputAdornment position="start">$</InputAdornment>
-              }
+              InputProps={{startAdornment:
+                      <InputAdornment position="start">$</InputAdornment>
+              }}
               fullWidth
             />
 
@@ -67,9 +66,9 @@ export default function Home({ updateStore, nextStep }) {
               name="fuelOil"
               type="number"
               label="Fuel Oil"
-              startAdornment={
-                <InputAdornment position="start">$</InputAdornment>
-              }
+              InputProps={{startAdornment:
+                      <InputAdornment position="start">$</InputAdornment>
+              }}
               fullWidth
             />
 
@@ -78,9 +77,9 @@ export default function Home({ updateStore, nextStep }) {
               name="propane"
               type="number"
               label="Propane"
-              startAdornment={
-                <InputAdornment position="start">$</InputAdornment>
-              }
+              InputProps={{startAdornment:
+                      <InputAdornment position="start">$</InputAdornment>
+              }}
               fullWidth
             />
 
