@@ -103,15 +103,27 @@ function LoggedIn() {
 function NotLoggedIn() {
   return (
     <>
-      <div />
-      <Link
-        component={RouterLink}
-        className={styles.rightAligned}
-        to="/login"
-        color="inherit"
-      >
-        Login
-      </Link>
+      <div className={styles.leftAligned}>
+        <Link
+          component={RouterLink}
+          to="/landing"
+          color="inherit"
+          className={styles.navbarItem}
+        >
+          Welcome Page
+        </Link>
+      </div>
+
+      <div className={styles.rightAligned}>
+        <Link
+          component={RouterLink}
+          className={styles.navbarItem}
+          to="/login"
+          color="inherit"
+        >
+          Login
+        </Link>
+      </div>
     </>
   );
 }

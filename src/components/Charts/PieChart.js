@@ -13,7 +13,7 @@ export default function Chart ({ data, className, width, height }) {
   const colors = useColors();
 
   return (
-    <PieChart width={width !== undefined ? width : 300} height={height !== undefined ? height : 200}>
+    <PieChart width={width !== undefined ? width : 300} height={height !== undefined ? height : 300}>
       <Pie
         data={data}
         dataKey="value"
