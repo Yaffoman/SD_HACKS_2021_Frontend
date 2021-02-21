@@ -16,7 +16,7 @@ import { Auth } from './components/Auth/Auth';
 import Theme from './components/Theme/Theme';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
-
+import Friends from "./pages/Friends/Friends";
 function Routes() {
   return (
     <Router>
@@ -25,6 +25,7 @@ function Routes() {
         <Route exact path='/landing' component={Landing} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/signup' component={Signup} />
+        <Route exact path='/friends' component={Friends} />
         <PrivateRoute exact path='/profile' component={Profile} />
         <PrivateRoute exact path='/update' component={Update} />
         <PrivateRoute path='/' component={Dashboard} />
