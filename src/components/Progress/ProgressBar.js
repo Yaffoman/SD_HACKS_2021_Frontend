@@ -7,11 +7,11 @@ import styles from "./Progress.module.css";
 
 export default function Progress({ percentage }) {
   return (
-    <Grid container justify="center" alignItems="center" alignContent="center">
+    <Grid container justify="center" alignItems="center" alignContent="center" direction="column">
       <Box position="relative" width="100%" m={2} display="inline-flex">
         <div className={styles.progressBarWrapper}>
           <LinearProgress
-            color={"secondary"}
+            color={"primary"}
             variant={"determinate"}
             value={percentage}
             className={styles.progressBar}
@@ -23,8 +23,8 @@ export default function Progress({ percentage }) {
           <Typography
             variant="subtitle1"
             component="div"
-            color="secondary"
-          >{`${Math.round(percentage)}%`}</Typography>
+            color="primary"
+          >You've completed {`${Math.round(percentage)}%`} of your goal so far!</Typography>
         </Box>
       </div>
     </Grid>

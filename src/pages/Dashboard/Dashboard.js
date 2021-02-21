@@ -6,7 +6,6 @@ import AreaChart from "../../components/Charts/AreaChart";
 import { Grid, Typography } from "@material-ui/core";
 import styles from "./Dashboard.module.css";
 import ProgressBar from "../../components/Progress/ProgressBar";
-import teal from "@material-ui/core/colors/teal";
 
 export default function Dashboard() {
   const chartWidth = 400;
