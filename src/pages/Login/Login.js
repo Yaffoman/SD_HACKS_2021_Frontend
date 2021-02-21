@@ -108,7 +108,11 @@ export default function Login() {
     <div style={{backgroundImage: `url(${background})`,
       height: '100vh',
       backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat'}}>
+      backgroundRepeat: 'no-repeat',
+      justifyContent: 'space-evenly',
+      display: 'flex',
+      flexDirection: 'column'}}
+      >
       <div className={styles.wrapper}>
         <LoginForm />
 
@@ -119,6 +123,7 @@ export default function Login() {
           </Link>
         </div>
       </div>
+        <span />
     </div>
   );
 }
