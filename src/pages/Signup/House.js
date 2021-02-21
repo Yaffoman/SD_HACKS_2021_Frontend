@@ -44,7 +44,7 @@ export default function Home({ updateStore, nextStep }) {
               component={TextField}
               name="electricity"
               type="number"
-              label="Electricity"
+              label="Electricity Bill in Dollars"
               startAdornment={
                 <InputAdornment position="start">$</InputAdornment>
               }

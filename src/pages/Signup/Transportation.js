@@ -6,6 +6,8 @@ import teal from "@material-ui/core/colors/teal";
 import amber from "@material-ui/core/colors/amber";
 import {NativeSelect, InputLabel} from "@material-ui/core";
 import Input from "@material-ui/core/Input";
+import {CheckBox} from "@material-ui/icons";
+import Checkbox from "@material-ui/core/Checkbox";
 
 const car_types = [
     'Car',
@@ -25,9 +27,12 @@ const city_types = [
 let travel_state = {}
 let selected = car_types[0]
 let number = 0
+let carpool = false
 
 class GridFragment extends React.Component {
-
+    state = {
+        checked: true
+    }
     render(){
         return(
             <><Grid container direction={"column"} spacing={5} justify={"space-between"}>
@@ -43,16 +48,28 @@ class GridFragment extends React.Component {
                         </NativeSelect>
                     </Grid>
                     <Grid item>
-                        <Input type="number" id={`input${this.props.title}`} placeholder={"Enter Mileage per week"} onChange={(event)=>{
+                        <Input type="number" id={`input${this.props.title}`} placeholder={"Enter Miles per month"} onChange={(event)=>{
                             number = event.target.value
                         }}/>
+                    </Grid>
+                    <Grid item>
+                        <Checkbox
+                            checked={this.state.checked}
+                            onChange={(event) => {
+                                carpool = event.target.checked;
+                                this.state.checked = carpool
+                                this.setState(this.state)
+                            }}
+                            name="checkedB"
+                            color="primary"
+                        />
                     </Grid>
 
                 </Grid>
 
                 <Grid item container direction={"row"} spacing={5} alignItems={"center"} justify={"center"}>
-                    <Grid item>
-                        <Input id={`input${this.props.title}`} placeholder={"Flights Per Year"} onChange={(event)=>{
+                    <Grid item xs={3}>
+                        <Input inputProps={{style: {textAlign: 'end'}}} fullWidth id={`input${this.props.title}`} placeholder={"Flights Per Year (roundtrip)"} onChange={(event)=>{
                             travel_state["flights_per_year"] = event.target.value
                         }}/>
                     </Grid>
@@ -76,6 +93,7 @@ export default function Transportation({updateStore, nextStep}) {
         <GridFragment />
         <Button variant="contained" color="primary" onClick={() => {
             travel_state[selected] = number
+            travel_state['carpool'] = carpool
             updateStore(travel_state);
             nextStep();
         }}>
