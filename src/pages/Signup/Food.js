@@ -14,6 +14,7 @@ import FormLabel from "@material-ui/core/FormLabel";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
+import InputAdornment from "@material-ui/core/InputAdornment";
 
 const food_types = [
   "Beef",
@@ -34,7 +35,10 @@ const food_amounts = [
     "Amount in oz",
     "Amount in Cups",
   ];
-let food_state = {}
+let food_state = {
+    'diet' : 'heavy_meat',
+    'monthly_food_spending': 0
+}
 
 class GridFragment extends React.Component {
   render() {
@@ -114,7 +118,11 @@ export default function Transportation({ nextStep, updateStore }) {
                       <FormControlLabel value="vegan" control={<Radio />} label="Vegan" />
                   </RadioGroup>
               </FormControl>
-        <Button variant="contained" color="primary" onClick={()=>{
+          <Input startAdornment={<InputAdornment position="start">$</InputAdornment>} placeholder={"Spending per Month"} onChange={(event)=>{
+              food_state["monthly_food_spending"] = event.target.value
+          }}/>
+
+          <Button variant="contained" color="primary" onClick={()=>{
             updateStore(food_state);
             nextStep();
         }}>

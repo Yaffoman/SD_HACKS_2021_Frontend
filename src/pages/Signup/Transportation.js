@@ -24,11 +24,16 @@ const city_types = [
     'Suburban'
 ]
 
-let travel_state = {}
+
 let selected = car_types[0]
 let number = 0
 let carpool = false
 
+let travel_state = {
+    'flights_per_year' : 0,
+    selected : number,
+    'carpool' : carpool,
+}
 class GridFragment extends React.Component {
     state = {
         checked: true
@@ -53,6 +58,8 @@ class GridFragment extends React.Component {
                         }}/>
                     </Grid>
                     <Grid item>
+                        <Typography variant={"body1"}>Carpool?</Typography>
+
                         <Checkbox
                             checked={this.state.checked}
                             onChange={(event) => {
@@ -64,7 +71,6 @@ class GridFragment extends React.Component {
                             color="primary"
                         />
                     </Grid>
-
                 </Grid>
 
                 <Grid item container direction={"row"} spacing={5} alignItems={"center"} justify={"center"}>
