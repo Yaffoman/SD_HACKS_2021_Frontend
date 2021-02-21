@@ -2,3 +2,20 @@
   display: flex;
   justify-content: space-between;
 }
+
+.leftAligned {
+  display: flex;
+  justify-content: space-between;
+  padding-right: auto;
+}
+
+.rightAligned {
+  display: flex;
+  justify-content: space-between;
+  padding-left: auto;
+}
+
+.navbarItem {
+  padding-left: 10px;
+  padding-right: 10px;
+}

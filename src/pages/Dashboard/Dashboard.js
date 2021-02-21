@@ -5,6 +5,7 @@ import BarChart from "../../components/BarChart/BarChart";
 import AreaChart from "../../components/Charts/AreaChart";
 import { Grid, Typography } from "@material-ui/core";
 import styles from "./Dashboard.module.css";
+import Progress from '../../components/Progress/Progress';
 
 export default function Dashboard() {
   const chartWidth = 400;

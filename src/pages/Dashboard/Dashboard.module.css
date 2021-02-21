@@ -11,3 +11,8 @@
 .subtitle {
   margin-top: 10px;
 }
+
+.progressChart {
+  max-height: 50px;
+  width: 100%;
+}
