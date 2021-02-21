@@ -36,7 +36,7 @@ function LoginForm() {
           setIsSubmitting(true);
 
           try {
-            const data = await fetch('URL_GOES_HERE', { // TODO put URL here
+            const data = await fetch('http://127.0.0.1:5000/login', { // TODO put URL here
               method: "POST",
               mode: "cors",
               cache: "no-cache",

@@ -21,7 +21,9 @@ function getStepContent(step, setActiveStep, store, setStore){
     case 3:
       return <House updateStore={updateStore} nextStep={nextStep} />
     case 4:
-      return <Results updateStore={updateStore} nextStep={nextStep}  />;
+      // return <Results updateStore={updateStore} nextStep={nextStep}  />;
+        console.log(store)
+        return <Results states={store} />
   }
 }
 
@@ -32,7 +34,7 @@ export default function Signup() {
   const steps = ["Basic Info", "Transportation", "Food", "House", "Results"];
 
   const submit = async () => {
-    const data = await fetch('URL_GOES_HERE', { // TODO replace url here
+    const data = await fetch('http://127.0.0.1:5000/signup', { // TODO replace url here
       method: "POST",
       mode: "cors",
       cache: "no-cache",
