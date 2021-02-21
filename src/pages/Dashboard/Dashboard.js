@@ -6,8 +6,10 @@ import AreaChart from "../../components/Charts/AreaChart";
 import { Grid, Typography } from "@material-ui/core";
 import styles from "./Dashboard.module.css";
 import ProgressBar from "../../components/Progress/ProgressBar";
+import useAuth from "../../components/Auth/Auth";
 
 export default function Dashboard() {
+  const { user } = useAuth();
   const chartWidth = 400;
   const chartHeight = 250;
 
@@ -19,7 +21,7 @@ export default function Dashboard() {
         </Typography>
         <div className={styles.subtitle}>
           <Typography variant="subtitle1" color="primary">
-            You're doing great!
+            You're doing great so far{user && user.firstName ? ` ${user.firstName}` : ''}!
           </Typography>
         </div>
       </div>

@@ -72,14 +72,6 @@ function LoggedIn() {
         </Link>
         <Link
           component={RouterLink}
-          to="/Global"
-          color="inherit"
-          className={styles.navbarItem}
-        >
-          Global
-        </Link>
-        <Link
-          component={RouterLink}
           to="/Friends"
           color="inherit"
           className={styles.navbarItem}
@@ -126,6 +118,7 @@ function NotLoggedIn() {
 
 export default function Navbar() {
   const { user } = useAuth();
+  const location = useLocation();
 
   return (
     <>
@@ -135,11 +128,18 @@ export default function Navbar() {
         </Toolbar>
       </AppBar>
 
-      <div className={styles.updateButton}>
-        <Button variant="contained" color="primary" component={RouterLink} to="/update">
-          Daily Update
-        </Button>
-      </div>
+      {user && location.pathname !== "/update" && (
+        <div className={styles.updateButton}>
+          <Button
+            variant="contained"
+            color="primary"
+            component={RouterLink}
+            to="/update"
+          >
+            Daily Update
+          </Button>
+        </div>
+      )}
     </>
   );
 }
