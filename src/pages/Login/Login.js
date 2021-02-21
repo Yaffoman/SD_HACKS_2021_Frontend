@@ -12,10 +12,10 @@ import Link from "@material-ui/core/Link";
 import useAuth from "../../components/Auth/Auth";
 
 const LoginSchema = Yup.object().shape({
-  username: Yup.string()
-    .min(4, "Too Short!")
-    .max(50, "Too Long!")
-    .required("Required"),
+  password: Yup.string()
+    .min(8, 'Too Short! You need a secure password.')
+    .max(50, 'Too Long!')
+    .required('Required'),
   email: Yup.string().email("Invalid email").required("Required"),
 });
 
@@ -28,7 +28,7 @@ function LoginForm() {
     <Grid container direction={"column"} spacing={4}>
       <Formik
         initialValues={{
-          username: "",
+          password: "",
           email: "",
         }}
         validationSchema={LoginSchema}
@@ -50,9 +50,9 @@ function LoginForm() {
             }).then((response) => response.json());
 
             console.log(data);
-            const { username, email } = values;
+            const { password, email } = values;
             setUser({
-              username,
+              password,
               email,
               firstName: "John",
               lastName: "Doe",
@@ -70,16 +70,17 @@ function LoginForm() {
           <>
             <Field
               component={TextField}
-              name="username"
-              label="Username"
+              name="email"
+              type="email"
+              label="Email"
               fullWidth
             />
 
             <Field
               component={TextField}
-              name="email"
-              type="email"
-              label="Email"
+              name="password"
+              type="password"
+              label="Password"
               fullWidth
             />
 
