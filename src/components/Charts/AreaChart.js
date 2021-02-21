@@ -5,6 +5,7 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
+  Legend,
   Tooltip,
 } from "recharts";
 import teal from "@material-ui/core/colors/teal";
@@ -35,13 +36,14 @@ export default function App({ data, width, height }) {
       margin={{
         top: 10,
         right: 30,
-        left: 0,
-        bottom: 0,
+        left: 20,
+        bottom: 5,
       }}
     >
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="date" />
       <YAxis />
+      <Legend />
       <Tooltip />
       {lineKeys.map((key, i) => {
         const randomColor = `#${Math.floor(Math.random() * 16777215).toString(

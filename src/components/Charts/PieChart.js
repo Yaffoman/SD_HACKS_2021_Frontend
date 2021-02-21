@@ -39,6 +39,7 @@ export default function Chart ({ data, className, width, height }) {
               <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
           ))}
       </Pie>
+      <Legend />
       <Tooltip />
     </PieChart>
   );
