@@ -34,7 +34,7 @@ export default function Signup() {
   const steps = ["Basic Info", "Transportation", "Food", "Home", "Results"];
 
   const submit = async () => {
-    const data = await fetch('URL_GOES_HERE', { // TODO replace url here
+    const data = await fetch('http://127.0.0.1:5000/signup', { // TODO replace url here
       method: "POST",
       mode: "cors",
       cache: "no-cache",
