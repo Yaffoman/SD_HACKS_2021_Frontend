@@ -8,7 +8,7 @@ import styles from "./Dashboard.module.css";
 
 export default function Dashboard() {
   const chartWidth = 400;
-  const chartHeight = 200;
+  const chartHeight = 250;
 
   return (
     <div>
@@ -28,7 +28,7 @@ export default function Dashboard() {
           <Grid container item justify="center" alignItems="center">
             <Grid item>
               <div className={styles.title}>
-                <Typography color="primary">Breakdown</Typography>
+                <Typography color="primary">Breakdown by Sector</Typography>
               </div>
 
               <PieChart
