@@ -42,6 +42,7 @@ class GridFragment extends React.Component {
             alignItems="center"
             justify="center"
             spacing={5}
+            key={element}
           >
             <Grid item>
               <InputLabel htmlFor={`food_${index}`}>{element}:</InputLabel>
@@ -49,7 +50,7 @@ class GridFragment extends React.Component {
 
             <Grid item>
               <Input type={'number'} id={`food_${index}`} placeholder={food_amounts[index]} onChange={(event)=>{
-                  food_state[food_amounts[index]] = event.target.value
+                  food_state[food_types[index]] = event.target.value
               }}>{}</Input>
             </Grid>
           </Grid>
