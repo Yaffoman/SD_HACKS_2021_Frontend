@@ -6,6 +6,8 @@ import Transportation from './Transportation';
 import Food from './Food';
 import House from './House';
 import Results from './Results';
+import useAuth from "../../components/Auth/Auth";
+import { useHistory } from "react-router-dom";
 
 function getStepContent(step, setActiveStep, store, setStore){
   const nextStep = () => setActiveStep(step + 1);
@@ -36,6 +38,8 @@ export default function Signup() {
   const [activeStep, setActiveStep] = useState(0);
   const [store, setStore] = useState({});
   const steps = ["Basic Info", "Transportation", "Food", "House", "Results"];
+  const { setUser } = useAuth();
+  const history = useHistory();
 
   const submit = async () => {
     const data = await fetch('http://127.0.0.1:5000/signup', { // TODO replace url here
@@ -50,6 +54,13 @@ export default function Signup() {
       referrerPolicy: "no-referrer",
       body: JSON.stringify(store),
     }).then((response) => response.json());
+
+    setUser({
+      firstName: "John",
+      lastName: "Doe",
+    });
+
+    history.push("/");
   }
 
   useEffect(() => {

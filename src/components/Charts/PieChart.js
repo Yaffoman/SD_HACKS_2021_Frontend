@@ -21,7 +21,7 @@ export default function Chart ({ data, className }) {
 
 
   return (
-    <PieChart width={300} height={300}>
+    <PieChart width={300} height={200}>
       <Pie
         data={data}
         dataKey="value"
