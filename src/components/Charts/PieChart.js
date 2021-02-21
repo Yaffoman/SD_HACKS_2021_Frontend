@@ -10,21 +10,23 @@ import amber from "@material-ui/core/colors/amber";
  * ]
  * The pie chart will proportion the values (i.e. they don't need to add up to 100).
  */
-export default function Chart ({ data }) {
+export default function Chart ({ data, className }) {
   const tealColor = teal[500]
   const amberColor = amber[300]
 
   return (
-    <PieChart width={1000} height={400}>
+    <PieChart width={300} height={300}>
       <Pie
-        dataKey="value"
-        isAnimationActive={false}
         data={data}
-        // cx={200}
-        // cy={200}
+        dataKey="value"
+        nameKey="label"
+        cx="50%"
+        cy="50%"
+        isAnimationActive={true}
         outerRadius={80}
         innerRadius={30}
         fill={tealColor}
+        className={className}
         label
       />
       <Tooltip />
