@@ -11,7 +11,7 @@ import {
 
 const bar_colors = ["#8888d8", "#6874a8", "#126428", ]
 
-export default function MyChart({people, values}) {
+export default function MyChart({people, values, width, height}) {
     let dictionary = {}
     people.forEach((element, index) => {
         dictionary[element] = values[index]
@@ -20,8 +20,8 @@ export default function MyChart({people, values}) {
     console.log(data)
     return (
         <BarChart
-            width={500}
-            height={300}
+            width={width !== undefined ? width : 500}
+            height={height !== undefined ? height : 300}
             data={data}
             margin={{
                 top: 5,

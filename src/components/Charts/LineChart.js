@@ -6,7 +6,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend
+  Legend,
 } from "recharts";
 import teal from "@material-ui/core/colors/teal";
 import amber from "@material-ui/core/colors/amber";
@@ -19,9 +19,9 @@ import amber from "@material-ui/core/colors/amber";
  *   National Avg: Number,
  * ]
  */
-export default function Chart({ data }) {
-  const tealColor = teal[500]
-  const amberColor = amber[300]
+export default function Chart({ data, width, height }) {
+  const tealColor = teal[500];
+  const amberColor = amber[300];
   const [lineKeys, setLineKeys] = useState([]);
 
   useEffect(() => {
@@ -29,18 +29,18 @@ export default function Chart({ data }) {
     delete keys.date;
 
     setLineKeys(Object.keys(keys));
-  }, [])
+  }, []);
 
   return (
     <LineChart
-      width={400}
-      height={240}
+      width={width !== undefined ? width : 400}
+      height={height !== undefined ? height : 240}
       data={data}
       margin={{
         top: 5,
         right: 30,
         left: 20,
-        bottom: 5
+        bottom: 5,
       }}
     >
       <CartesianGrid strokeDasharray="3 3" />
@@ -49,13 +49,19 @@ export default function Chart({ data }) {
       <Tooltip />
       <Legend />
       {lineKeys.map((key) => {
-        const randomColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
-        console.log(key)
-        console.log(randomColor)
+        const randomColor = `#${Math.floor(Math.random() * 16777215).toString(
+          16
+        )}`;
 
         return (
-        <Line type="monotone" dataKey={key} stroke={key === "You" ? tealColor : randomColor} activeDot={{r: key === "You" ? 6 : 2}} key={key} />
-          )
+          <Line
+            type="monotone"
+            dataKey={key}
+            stroke={key === "You" ? tealColor : randomColor}
+            activeDot={{ r: key === "You" ? 6 : 2 }}
+            key={key}
+          />
+        );
       })}
     </LineChart>
   );
