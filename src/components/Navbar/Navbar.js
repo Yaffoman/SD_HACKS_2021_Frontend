@@ -72,14 +72,6 @@ function LoggedIn() {
         </Link>
         <Link
           component={RouterLink}
-          to="/Global"
-          color="inherit"
-          className={styles.navbarItem}
-        >
-          Global
-        </Link>
-        <Link
-          component={RouterLink}
           to="/Friends"
           color="inherit"
           className={styles.navbarItem}
