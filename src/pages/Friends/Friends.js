@@ -110,15 +110,19 @@ export default function Friends() {
     return (
         <div style={{
             background: amber[50],
-            height: '200vh'
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-evenly",
+            flexDirection: "column",
+            height: "140vh",
         }}>
             <Typography variant={'h4'} color={"primary"}>Friends Ranking</Typography>
             <BarChart people={["Sarah", "You", "Tommy", "Josh"]} values={[75,50,22,20]}/>
-            <Grid container direction={"column"} spacing={5}>
-                <Grid item container direction={"row"} spacing={5}>
+            <Grid container direction={"column"} spacing={5} alignItems={"center"}>
+                <Grid item container direction={"row-reverse"} spacing={5} justify={"center"}>
                     <FriendsComponent1 />
                 </Grid>
-                <Grid item container direction={"row"} spacing={5}>
+                <Grid item container direction={"row"} spacing={5} alignItems={"center"} justify={"center"}>
                     <FriendsComponent2 />
                 </Grid>
             </Grid>
