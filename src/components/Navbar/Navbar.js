@@ -11,7 +11,8 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import Progress from "../Progress/Progress";
+import Progress from "../Progress/ProgressCircle";
+import { useLocation } from 'react-router-dom'
 
 function ProfileMenu() {
   const [anchor, setAnchor] = useState(null);
@@ -38,9 +39,9 @@ function ProfileMenu() {
         open={Boolean(anchor)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>
+        {/* <MenuItem onClick={handleClose}>
           <RouterLink to="/profile">Profile</RouterLink>
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem
           onClick={(event) => {
             setUser(null);
@@ -55,6 +56,8 @@ function ProfileMenu() {
 }
 
 function LoggedIn() {
+  const location = useLocation();
+
   return (
     <>
       <div className={styles.leftAligned}>
@@ -70,12 +73,12 @@ function LoggedIn() {
       </div>
 
       <div className={styles.rightAligned}>
-        <div className={styles.progress}>
+        {(location.pathname !== '/') && <Link component={RouterLink} to="/" color="inherit" className={styles.progress}>
           <Typography>Goal Progress</Typography>
           <Grid item className={styles.navbarItem}>
             <Progress percentage={60} />
           </Grid>
-        </div>
+        </Link>}
         <ProfileMenu />
       </div>
     </>
@@ -85,6 +88,7 @@ function LoggedIn() {
 function NotLoggedIn() {
   return (
     <>
+      <div />
       <Link
         component={RouterLink}
         className={styles.rightAligned}
@@ -107,17 +111,4 @@ export default function Navbar() {
       </Toolbar>
     </AppBar>
   );
-
-  // return (
-  //   <AppBar position="sticky" color={"primary"}>
-  //     <Toolbar className={styles.toolbar}>
-  //       <Link component={RouterLink} to='/' color="inherit">Dashboard</Link>
-  //       {user
-  //         ? <ProfileMenu />
-  //         // TODO maybe user instead: ? <Button color="inherit" onClick={() => setUser(null)}>Logout</Button>
-  //         : <Link component={RouterLink} to='/login' color="inherit">Login</Link>
-  //       }
-  //     </Toolbar>
-  //   </AppBar>
-  // )
 }

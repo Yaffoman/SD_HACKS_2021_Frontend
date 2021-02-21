@@ -20,9 +20,11 @@
   justify-content: space-between;
   align-items: center;
   padding-left: auto;
+  text-decoration: none !important;
 }
 
 .navbarItem {
   padding-left: 10px;
   padding-right: 10px;
+  text-decoration: none !important;
 }

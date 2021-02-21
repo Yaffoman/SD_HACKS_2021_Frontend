@@ -5,7 +5,7 @@ import BarChart from "../../components/BarChart/BarChart";
 import AreaChart from "../../components/Charts/AreaChart";
 import { Grid, Typography } from "@material-ui/core";
 import styles from "./Dashboard.module.css";
-import Progress from '../../components/Progress/Progress';
+import ProgressBar from "../../components/Progress/ProgressBar";
 
 export default function Dashboard() {
   const chartWidth = 400;
@@ -22,6 +22,10 @@ export default function Dashboard() {
             You're doing great!
           </Typography>
         </div>
+      </div>
+
+      <div>
+        <ProgressBar percentage={60} />
       </div>
 
       <div className={styles.wrapper}>
