@@ -1,5 +1,5 @@
 import React from "react";
-import { PieChart, Pie, Legend, Tooltip } from "recharts";
+import {PieChart, Pie, Legend, Tooltip, Cell} from "recharts";
 import teal from "@material-ui/core/colors/teal";
 import amber from "@material-ui/core/colors/amber";
 
@@ -14,6 +14,12 @@ export default function Chart ({ data, className }) {
   const tealColor = teal[500]
   const amberColor = amber[300]
 
+    let colors = data.map((element, index) => {
+        return "#" + Math.floor(Math.random()*16777215).toString(16);
+
+    })
+
+
   return (
     <PieChart width={300} height={300}>
       <Pie
@@ -25,10 +31,14 @@ export default function Chart ({ data, className }) {
         isAnimationActive={true}
         outerRadius={80}
         innerRadius={30}
-        fill={tealColor}
+        fill={colors}
         className={className}
         label
-      />
+      >
+          {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+          ))}
+      </Pie>
       <Tooltip />
     </PieChart>
   );
