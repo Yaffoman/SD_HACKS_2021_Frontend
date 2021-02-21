@@ -4,7 +4,7 @@ import React, { createContext, useState } from 'react';
 // If they are, it will hold their name, email, etc., else it will be null
 const AuthContext = createContext(null);
 export function Auth({ children }) {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(true);
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>
