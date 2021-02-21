@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import teal from "@material-ui/core/colors/teal";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <div>
+      <App />
+    </div>
   </React.StrictMode>,
   document.getElementById('root')
 );

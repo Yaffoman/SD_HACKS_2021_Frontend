@@ -12,7 +12,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Progress from "../Progress/ProgressCircle";
-import { useLocation } from 'react-router-dom'
+import { useLocation } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
 function ProfileMenu() {
   const [anchor, setAnchor] = useState(null);
@@ -61,24 +62,46 @@ function LoggedIn() {
   return (
     <>
       <div className={styles.leftAligned}>
-        <Link component={RouterLink} to="/" color="inherit" className={styles.navbarItem}>
+        <Link
+          component={RouterLink}
+          to="/"
+          color="inherit"
+          className={styles.navbarItem}
+        >
           Dashboard
         </Link>
-        <Link component={RouterLink} to="/Global" color="inherit" className={styles.navbarItem}>
+        <Link
+          component={RouterLink}
+          to="/Global"
+          color="inherit"
+          className={styles.navbarItem}
+        >
           Global
         </Link>
-        <Link component={RouterLink} to="/Friends" color="inherit" className={styles.navbarItem}>
+        <Link
+          component={RouterLink}
+          to="/Friends"
+          color="inherit"
+          className={styles.navbarItem}
+        >
           Friends
         </Link>
       </div>
 
       <div className={styles.rightAligned}>
-        {(location.pathname !== '/') && <Link component={RouterLink} to="/" color="inherit" className={styles.progress}>
-          <Typography>Goal Progress</Typography>
-          <Grid item className={styles.navbarItem}>
-            <Progress percentage={60} />
-          </Grid>
-        </Link>}
+        {location.pathname !== "/" && (
+          <Link
+            component={RouterLink}
+            to="/"
+            color="inherit"
+            className={styles.progress}
+          >
+            <Typography>Goal Progress</Typography>
+            <Grid item className={styles.navbarItem}>
+              <Progress percentage={60} />
+            </Grid>
+          </Link>
+        )}
         <ProfileMenu />
       </div>
     </>
@@ -105,10 +128,18 @@ export default function Navbar() {
   const { user } = useAuth();
 
   return (
-    <AppBar position="sticky" color={"primary"}>
-      <Toolbar className={styles.toolbar}>
-        {user ? <LoggedIn /> : <NotLoggedIn />}
-      </Toolbar>
-    </AppBar>
+    <>
+      <AppBar position="sticky" color={"primary"}>
+        <Toolbar className={styles.toolbar}>
+          {user ? <LoggedIn /> : <NotLoggedIn />}
+        </Toolbar>
+      </AppBar>
+
+      <div className={styles.updateButton}>
+        <Button variant="contained" color="primary" component={RouterLink} to="/update">
+          Daily Update
+        </Button>
+      </div>
+    </>
   );
 }
