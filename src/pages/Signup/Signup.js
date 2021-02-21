@@ -8,6 +8,7 @@ import House from './House';
 import Results from './Results';
 import useAuth from "../../components/Auth/Auth";
 import { useHistory } from "react-router-dom";
+import background from "../../assets/images/homepage.png";
 
 function getStepContent(step, setActiveStep, store, setStore){
   const nextStep = () => setActiveStep(step + 1);
@@ -74,7 +75,10 @@ export default function Signup() {
   }, [activeStep]);
 
   return (
-    <>
+    <div style={{backgroundImage: `url(${background})`,
+      height: '100vh',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat'}}>
       <Stepper activeStep={activeStep}>
         {steps.map((label, index) => (
             <Step key={label}>
@@ -86,6 +90,6 @@ export default function Signup() {
       </Stepper>
 
       {getStepContent(activeStep, setActiveStep, store, setStore)}
-    </>
+    </div>
   );
 }

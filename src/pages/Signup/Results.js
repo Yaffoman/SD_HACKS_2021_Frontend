@@ -104,7 +104,7 @@ export default function Results({ states }) {
             height: "100vh",
         }}>
             <ChartsFragment emission={state.total} utilities={state.house} food={state.food} transportation={state.travel} misc={state.misc}/>
-            <Button variant={"contained"} onClick={() => {
+            <Button variant={"contained"} color={"secondary"} onClick={() => {
                 history.push('/')
             }}>Enter Your Dashboard</Button>
         </div>

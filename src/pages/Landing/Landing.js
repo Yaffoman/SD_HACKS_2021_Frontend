@@ -58,7 +58,7 @@ class InfoBoxes extends React.Component {
                 About Us
               </Typography>
               <Typography variant={'body1'} color={'textSecondary'}>
-                Here is some more information with details about carbon emission
+                Here is some information about how <b>Carbon Counts</b> can help you help the planet
               </Typography>
             </CardContent>
             <CardActions>
@@ -71,7 +71,7 @@ class InfoBoxes extends React.Component {
                 How can you help?
               </Typography>
               <Typography variant={'body1'} color={'textSecondary'}>
-                Here is some more information with details about carbon emission
+                  Here is some information with details about carbon emission and our impact on our <b>planet's future</b>
               </Typography>
             </CardContent>
             <CardActions>

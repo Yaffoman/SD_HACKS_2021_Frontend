@@ -6,7 +6,6 @@ import teal from "@material-ui/core/colors/teal";
 import amber from "@material-ui/core/colors/amber";
 import {NativeSelect, InputLabel} from "@material-ui/core";
 import Input from "@material-ui/core/Input";
-import {CheckBox} from "@material-ui/icons";
 import Checkbox from "@material-ui/core/Checkbox";
 
 const car_types = [
@@ -35,7 +34,7 @@ let travel_state = {
 }
 class GridFragment extends React.Component {
     state = {
-        checked: true
+        checked: false
     }
     render(){
         return(

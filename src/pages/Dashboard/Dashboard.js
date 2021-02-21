@@ -6,14 +6,17 @@ import AreaChart from "../../components/Charts/AreaChart";
 import { Grid, Typography } from "@material-ui/core";
 import styles from "./Dashboard.module.css";
 import ProgressBar from "../../components/Progress/ProgressBar";
+import teal from "@material-ui/core/colors/teal";
 
 export default function Dashboard() {
   const chartWidth = 400;
   const chartHeight = 250;
 
   return (
-    <div>
-      <div className={styles.title}>
+        <div style={{
+            background: teal[50],
+            height: '100vh'
+        }}>      <div className={styles.title}>
         <Typography variant="h4" color="primary">
           Your Progress
         </Typography>
@@ -157,41 +160,3 @@ export default function Dashboard() {
     </div>
   );
 }
-
-// data={[
-//   {
-//     date: "2/14",
-//     "National Avg": 4000,
-//     You: 2400,
-//   },
-//   {
-//     date: "2/15",
-//     "National Avg": 3000,
-//     You: 1398,
-//   },
-//   {
-//     date: "2/16",
-//     "National Avg": 2000,
-//     You: 9800,
-//   },
-//   {
-//     date: "2/17",
-//     "National Avg": 2780,
-//     You: 3908,
-//   },
-//   {
-//     date: "2/18",
-//     "National Avg": 1890,
-//     You: 4800,
-//   },
-//   {
-//     date: "2/19",
-//     "National Avg": 2390,
-//     You: 3800,
-//   },
-//   {
-//     date: "2/20",
-//     "National Avg": 3490,
-//     You: 4300,
-//   },
-// ]}
