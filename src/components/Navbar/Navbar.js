@@ -10,6 +10,7 @@ import styles from "./Navbar.module.css";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
 import Progress from "../Progress/Progress";
 
 function ProfileMenu() {
@@ -25,7 +26,7 @@ function ProfileMenu() {
   };
 
   return (
-    <div>
+    <div className={styles.navbarItem}>
       <IconButton onClick={handleClick}>
         <AccountCircle />
       </IconButton>
@@ -60,18 +61,21 @@ function LoggedIn() {
         <Link component={RouterLink} to="/" color="inherit" className={styles.navbarItem}>
           Dashboard
         </Link>
-        <Link component={RouterLink} to="/Global" color="inherit">
+        <Link component={RouterLink} to="/Global" color="inherit" className={styles.navbarItem}>
           Global
         </Link>
-        <Link component={RouterLink} to="/Friends" color="inherit">
+        <Link component={RouterLink} to="/Friends" color="inherit" className={styles.navbarItem}>
           Friends
         </Link>
       </div>
 
       <div className={styles.rightAligned}>
-        <Grid item>
-          <Progress percentage={60} />
-        </Grid>
+        <div className={styles.progress}>
+          <Typography>Goal Progress</Typography>
+          <Grid item className={styles.navbarItem}>
+            <Progress percentage={60} />
+          </Grid>
+        </div>
         <ProfileMenu />
       </div>
     </>

@@ -15,6 +15,13 @@
   padding-left: auto;
 }
 
+.progress {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: auto;
+}
+
 .navbarItem {
   padding-left: 10px;
   padding-right: 10px;
