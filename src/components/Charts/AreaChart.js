@@ -9,11 +9,12 @@ import {
   Tooltip,
 } from "recharts";
 import teal from "@material-ui/core/colors/teal";
-import amber from "@material-ui/core/colors/amber";
+import useColors from '../../hooks/useColors';
+import { randomColor } from '../../utils/index';
 
 export default function App({ data, width, height }) {
   const tealColor = teal[500];
-  const amberColor = amber[300];
+  const colors = useColors().filter(color => color != tealColor);
   const [lineKeys, setLineKeys] = useState([]);
 
   useEffect(() => {
@@ -46,17 +47,20 @@ export default function App({ data, width, height }) {
       <Legend />
       <Tooltip />
       {lineKeys.map((key, i) => {
-        const randomColor = `#${Math.floor(Math.random() * 16777215).toString(
-          16
-        )}`;
+        const color =
+          key === "You"
+            ? tealColor :
+          i >= colors.length
+            ? randomColor()
+          : colors[i];
 
         return (
           <Area
             type="monotone"
             dataKey={key}
-            stroke={key === "You" ? tealColor : randomColor}
+            stroke={color}
             stackId={i + 1}
-            fill={key === "You" ? tealColor : randomColor}
+            fill={color}
             key={key}
           />
         );

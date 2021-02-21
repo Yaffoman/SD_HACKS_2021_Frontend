@@ -1,7 +1,6 @@
 import React from "react";
 import {PieChart, Pie, Legend, Tooltip, Cell} from "recharts";
-import teal from "@material-ui/core/colors/teal";
-import amber from "@material-ui/core/colors/amber";
+import useColors from '../../hooks/useColors';
 
 /**
  * parameter data needs to be in the form:
@@ -11,14 +10,7 @@ import amber from "@material-ui/core/colors/amber";
  * The pie chart will proportion the values (i.e. they don't need to add up to 100).
  */
 export default function Chart ({ data, className, width, height }) {
-  const tealColor = teal[500]
-  const amberColor = amber[300]
-
-    let colors = data.map((element, index) => {
-        return "#" + Math.floor(Math.random()*16777215).toString(16);
-
-    })
-
+  const colors = useColors();
 
   return (
     <PieChart width={width !== undefined ? width : 300} height={height !== undefined ? height : 200}>
@@ -35,8 +27,8 @@ export default function Chart ({ data, className, width, height }) {
         className={className}
         label
       >
-          {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+          {data.map((entry, i) => (
+              <Cell key={`cell-${i}`} fill={colors[i % colors.length]} />
           ))}
       </Pie>
       <Legend />

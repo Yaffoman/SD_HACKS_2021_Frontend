@@ -9,26 +9,31 @@ import {
   Legend,
 } from "recharts";
 import teal from "@material-ui/core/colors/teal";
-import amber from "@material-ui/core/colors/amber";
+import useColors from '../../hooks/useColors';
+import { randomColor } from '../../utils/index';
 
 /**
  * Needs to be in the following format:
  * [
  *   date: "2/20/2021",
  *   You: Number,
- *   National Avg: Number,
  * ]
  */
 export default function Chart({ data, width, height }) {
   const tealColor = teal[500];
-  const amberColor = amber[300];
+  const colors = useColors().filter(color => color != tealColor);
   const [lineKeys, setLineKeys] = useState([]);
 
   useEffect(() => {
     const keys = { ...data[0] };
     delete keys.date;
+    const arrKeys = Object.keys(keys);
+    const index = arrKeys.findIndex((x) => x === "You");
+    const t = arrKeys[index];
+    arrKeys[index] = arrKeys[0];
+    arrKeys[0] = t;
 
-    setLineKeys(Object.keys(keys));
+    setLineKeys(arrKeys);
   }, []);
 
   return (
@@ -48,16 +53,19 @@ export default function Chart({ data, width, height }) {
       <YAxis />
       <Tooltip />
       <Legend />
-      {lineKeys.map((key) => {
-        const randomColor = `#${Math.floor(Math.random() * 16777215).toString(
-          16
-        )}`;
+      {lineKeys.map((key, i) => {
+        const color =
+          key === "You"
+            ? tealColor :
+          i >= colors.length
+            ? randomColor()
+          : colors[i];
 
         return (
           <Line
             type="monotone"
             dataKey={key}
-            stroke={key === "You" ? tealColor : randomColor}
+            stroke={color}
             activeDot={{ r: key === "You" ? 6 : 2 }}
             key={key}
           />
