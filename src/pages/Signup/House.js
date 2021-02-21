@@ -15,11 +15,11 @@ export default function House({ updateStore, nextStep }) {
       }}>
       <Formik
         initialValues={{
-          occupants: 0,
-          electricity: 0,
-          naturalGas: 0,
+          occupants: 2,
+          electricity: 240,
+          naturalGas: 100,
           fuelOil: 0,
-          propane: 0,
+          propane: 75,
         }}
         onSubmit={values => {
           updateStore(values);
@@ -34,8 +34,6 @@ export default function House({ updateStore, nextStep }) {
               name="occupants"
               type="number"
               label="Occupants"
-
-
               fullWidth
             />
 

@@ -9,7 +9,11 @@ import Results from './Results';
 
 function getStepContent(step, setActiveStep, store, setStore){
   const nextStep = () => setActiveStep(step + 1);
-  const updateStore = (updates) => setStore({ ...store, ...updates});
+  const updateStore = (updates) => {
+    console.log('calling update store');
+    console.log(updates);
+    setStore({ ...store, ...updates});
+  };
 
   switch(step) {
     case 0:
