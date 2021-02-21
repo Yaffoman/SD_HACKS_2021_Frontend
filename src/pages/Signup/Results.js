@@ -1,74 +1,33 @@
 import React from "react";
 
 import {
-    Grid,
-    Button,
     Typography,
 } from "@material-ui/core";
-import teal from "@material-ui/core/colors/teal";
-import amber from "@material-ui/core/colors/amber";
-import { NativeSelect, InputLabel } from "@material-ui/core";
-import Input from "@material-ui/core/Input";
+import BarChart from "../../components/BarChart/BarChart";
+import PieChart from "../../components/Charts/PieChart";
+import Grid from "@material-ui/core/Grid";
 
-const food_types = [
-    "Beef",
-    "Lamb",
-    "Pork",
-    "Chicken",
-    "Cheese",
-    "Chocolate",
-    "Coffee",
-];
+class ChartsFragment extends React.Component {
 
-const food_amounts = [
-    "Amount in lbs",
-    "Amount in lbs",
-    "Amount in lbs",
-    "Amount in lbs",
-    "Amount in lbs",
-    "Amount in oz",
-    "Amount in Cups",
-];
-let food_state = {}
-
-class GridFragment extends React.Component {
     render() {
-        let food_inputs = food_types.map((element, index) => {
-            return (
-                <Grid
-                    container
-                    item
-                    direction="row"
-                    alignItems="center"
-                    justify="center"
-                    spacing={5}
-                >
-                    <Grid item>
-                        <InputLabel htmlFor={`food_${index}`}>{element}:</InputLabel>
-                    </Grid>
-
-                    <Grid item>
-                        <Input type={'number'} id={`food_${index}`} placeholder={food_amounts[index]} onChange={(event)=>{
-                            food_state[food_amounts[index]] = event.target.value
-                        }}>{}</Input>
-                    </Grid>
-                </Grid>
-            );
-        });
-
+        //In tons per year
+        const world_emissions = 4
+        const usa_emissions = 20
+        let total_emissions = this.props.emission
+        let data = [
+            {label: "gas", value: this.props.gas},
+            {label: "electricity", value: this.props.electricity},
+            {label: "transportation", value: this.props.transportation},
+            {label: "food", value:this.props.food}
+        ]
         return (
             <>
                 <Typography variant={"h4"} color={"primary"}>
-                    Enter Estimated Amount of Each Food Per Week
+                    How Do You Stack Up?
                 </Typography>
-
-                <Grid
-                    container
-                    direction="column"
-                    spacing={5}
-                    alignItems="center"
-                >
-                    {food_inputs}
+                <Grid container direction={"row"}>
+                    <Grid item><BarChart people={["You", "USA Average", "World Average"]} values={[total_emissions, usa_emissions, world_emissions]} /></Grid>
+                    <Grid item><PieChart data={data}/></Grid>
                 </Grid>
             </>
         );
@@ -77,11 +36,7 @@ class GridFragment extends React.Component {
 
 
 export default function Results({ states }) {
-    let arr = [];
 
-    for (let key in states) {
-        arr.push(`${key} : ${states[key]}`);
-    }
     return (
         <div style={{
             display: "flex",
@@ -90,10 +45,7 @@ export default function Results({ states }) {
             flexDirection: "column",
             height: "100vh",
         }}>
-
-            {arr.map((element, index)=>{
-                return <p key={index}>{element}</p>
-            })}
+            <ChartsFragment emission={10} electricity={5} gas={4} food={12} transportation={33}/>
         </div>
     );
 }

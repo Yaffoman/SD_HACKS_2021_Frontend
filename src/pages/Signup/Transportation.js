@@ -24,7 +24,6 @@ const city_types = [
     'Suburban'
 ]
 
-
 let selected = car_types[0]
 let number = 0
 let carpool = false
