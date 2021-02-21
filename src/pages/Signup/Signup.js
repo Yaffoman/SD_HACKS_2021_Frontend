@@ -28,7 +28,6 @@ function getStepContent(step, setActiveStep, store, setStore){
       return <House updateStore={updateStore} nextStep={nextStep} />
     case 4:
       // return <Results updateStore={updateStore} nextStep={nextStep}  />;
-        console.log(store)
         return <Results states={store} />
   }
 }
@@ -60,7 +59,7 @@ export default function Signup() {
       lastName: "Doe",
     });
 
-    history.push("/");
+    // history.push("/");
   }
 
   useEffect(() => {
