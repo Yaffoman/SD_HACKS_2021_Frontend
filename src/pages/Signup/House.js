@@ -7,8 +7,6 @@ export default function Home({ updateStore, nextStep }) {
     <Grid container direction={"column"} alignItems="center" spacing={2}
       style={{
         marginTop: "20px",
-        marginLeft: "10%",
-        marginRight: "10%",
         marginBottom: "20px",
         textAlign: "center",
         maxWidth: "500px",

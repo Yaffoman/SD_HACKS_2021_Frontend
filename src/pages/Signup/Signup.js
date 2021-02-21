@@ -21,7 +21,9 @@ function getStepContent(step, setActiveStep, store, setStore){
     case 3:
       return <Home updateStore={updateStore} nextStep={nextStep} />
     case 4:
-      return <Results updateStore={updateStore} nextStep={nextStep}  />;
+      // return <Results updateStore={updateStore} nextStep={nextStep}  />;
+        console.log(store)
+        return <Results states={store} />
   }
 }
 

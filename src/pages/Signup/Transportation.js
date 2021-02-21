@@ -22,114 +22,47 @@ const city_types = [
     'Suburban'
 ]
 
-const food_types = [
-    'beef',
-    'lamb',
-    'pork',
-    'chicken',
-    'other'
-]
+let travel_state = {}
+let selected = car_types[0]
+let number = 0
 
-const appliances_types = [
-    'laundry',
-    'dishwasher',
-    'pool heater',
-    'AC'
-]
-
-class Title extends React.Component {
-  render() {
-    return (
-        <>
-          <Typography variant={'h2'} color={"primary"}>Update Your Daily Carbon Footprint</Typography>
-        </>
-    )
-  }
-}
-
-function renderDropDownOptions(type){
-    switch(type) {
-        case 'Transportation':
-            return car_types.map((element) => {
-                return <option value={element}>{element}</option>
-            })
-        case 'Food':
-            return food_types.map((element) => {
-                return <option value={element}>{element}</option>
-            })
-        case 'Appliances':
-            return appliances_types.map((element) => {
-                return <option value={element}>{element}</option>
-            })
-        case 'Misc':
-            return car_types.map((element) => {
-                return <option value={element}>{element}</option>
-            })
-    }
-}
-
-function getAmountText(type){
-    switch(type){
-        case 'Transportation':
-            return 'Enter Mileage (mi):'
-        case 'Food':
-            return 'Enter Amount (oz):'
-        case 'Appliances':
-            return 'Enter Usage (min):'
-        case 'Misc':
-            return 'Enter Amount'
-    }
-}
-class EmissionSource extends React.Component {
+class GridFragment extends React.Component {
 
     render(){
         return(
-            <>
-                <Card variant={'outlined'} className='sourcebox'>
-                    <CardContent>
-                        <Grid container direction={"row"} spacing={5} alignItems={"center"} justify={"center"}>
+            <><Grid container direction={"column"} spacing={5} justify={"space-between"}>
+                <Grid container direction={"row"} spacing={5} alignItems={"flex-end"} justify={"center"}>
+                    <Grid item>
+                        <InputLabel htmlFor={`select${this.props.title}`}>Select Type</InputLabel>
+                        <NativeSelect id={`select${this.props.title}`} onChange={(event)=>{
+                            selected = event.target.value
+                        }}>
+                            {car_types.map((element) => {
+                                return <option value={element} key={`option_${element}`}>{element}</option>
+                            })}
+                        </NativeSelect>
+                    </Grid>
+                    <Grid item>
+                        <Input type="number" id={`input${this.props.title}`} placeholder={"Enter Mileage per week"} onChange={(event)=>{
+                            number = event.target.value
+                        }}/>
+                    </Grid>
 
-                        <Grid item>
-                            <Typography variant={'h5'} color={'textPrimary'}>
-                            {this.props.title}
-                            </Typography>
-                        </Grid>
+                </Grid>
 
-                        </Grid>
-                        <Grid container direction={"row"} spacing={5} alignItems={"center"} justify={"center"}>
-                            <Grid item>
-                                <InputLabel htmlFor={`select${this.props.title}`}>Select Type</InputLabel>
-                            <NativeSelect id={`select${this.props.title}`}>
-                                {renderDropDownOptions(this.props.title)}
-                            </NativeSelect>
-                            </Grid>
-                            <Grid item>
-                            <div>
-                            <InputLabel htmlFor={`input${this.props.title}`}>{getAmountText(this.props.title)}</InputLabel>
-                            <Input id={`input${this.props.title}`} />
-                            </div>
-                            </Grid>
-                        </Grid>
-                    </CardContent>
-                </Card>
+                <Grid item container direction={"row"} spacing={5} alignItems={"center"} justify={"center"}>
+                    <Grid item>
+                        <Input id={`input${this.props.title}`} placeholder={"Flights Per Year"} onChange={(event)=>{
+                            travel_state["flights_per_year"] = event.target.value
+                        }}/>
+                    </Grid>
+                </Grid>
+            </Grid>
             </>
         )
     }
 }
 
-class GridFragment extends React.Component {
-    render() {
-        return (
-            <>
-                <Title />
-
-                <EmissionSource title={"Transportation"} />
-        </>
-        );
-
-    };
-
-}
 
 export default function Transportation({updateStore, nextStep}) {
     return (
@@ -141,7 +74,11 @@ export default function Transportation({updateStore, nextStep}) {
             height: '100vh'
         }}>
         <GridFragment />
-        <Button variant="contained" color="primary" onClick={nextStep}>
+        <Button variant="contained" color="primary" onClick={() => {
+            travel_state[selected] = number
+            updateStore(travel_state);
+            nextStep();
+        }}>
             Next
         </Button>
         </div>
