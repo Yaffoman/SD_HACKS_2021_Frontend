@@ -1,116 +1,69 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   AreaChart,
   Area,
   XAxis,
   YAxis,
   CartesianGrid,
-  Tooltip
+  Legend,
+  Tooltip,
 } from "recharts";
+import teal from "@material-ui/core/colors/teal";
+import useColors from '../../hooks/useColors';
+import { randomColor } from '../../utils/index';
 
-const data = [
-  {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400
-  },
-  {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210
-  },
-  {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290
-  },
-  {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000
-  },
-  {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100
-  }
-];
-
-export default function App(data) {
-  const tealColor = teal[500]
-  const amberColor = amber[300]
+export default function App({ data, width, height }) {
+  const tealColor = teal[500];
+  const colors = useColors().filter(color => color != tealColor);
   const [lineKeys, setLineKeys] = useState([]);
 
   useEffect(() => {
     const keys = { ...data[0] };
     delete keys.date;
+    const arrKeys = Object.keys(keys);
+    const index = arrKeys.findIndex((x) => x === "You");
+    const t = arrKeys[index];
+    arrKeys[index] = arrKeys[0];
+    arrKeys[0] = t;
 
-    setLineKeys(Object.keys(keys));
-  }, [])
+    setLineKeys(arrKeys);
+  }, []);
 
   return (
     <AreaChart
-      width={500}
-      height={400}
+      width={width !== undefined ? width : 400}
+      height={height !== undefined ? height : 200}
       data={data}
       margin={{
         top: 10,
         right: 30,
-        left: 0,
-        bottom: 0
+        left: 20,
+        bottom: 5,
       }}
     >
       <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
+      <XAxis dataKey="date" />
       <YAxis />
+      <Legend />
       <Tooltip />
-      <Area
-        type="monotone"
-        dataKey="uv"
-        stackId="1"
-        stroke="#8884d8"
-        fill="#8884d8"
-      />
-      <Area
-        type="monotone"
-        dataKey="pv"
-        stackId="1"
-        stroke="#82ca9d"
-        fill="#82ca9d"
-      />
-      <Area
-        type="monotone"
-        dataKey="amt"
-        stackId="1"
-        stroke="#ffc658"
-        fill="#ffc658"
-      />
-      {lineKeys.map((key) => {
-        const randomColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
-        console.log(key)
-        console.log(randomColor)
+      {lineKeys.map((key, i) => {
+        const color =
+          key === "You"
+            ? tealColor :
+          i >= colors.length
+            ? randomColor()
+          : colors[i];
 
         return (
-          
-        <Line type="monotone" dataKey={key} stroke={key === "You" ? tealColor : randomColor} activeDot={{r: key === "You" ? 6 : 2}} key={key} />
-          )
+          <Area
+            type="monotone"
+            dataKey={key}
+            stroke={color}
+            stackId={i + 1}
+            fill={color}
+            key={key}
+          />
+        );
       })}
     </AreaChart>
   );

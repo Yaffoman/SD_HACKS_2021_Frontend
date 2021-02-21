@@ -1,7 +1,18 @@
 .title {
   text-align: center;
+  margin-top: 10px;
 }
 
 .wrapper {
   margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.subtitle {
+  margin-top: 10px;
+}
+
+.progressChart {
+  max-height: 50px;
+  width: 100%;
 }
