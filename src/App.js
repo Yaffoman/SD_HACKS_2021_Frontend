@@ -13,18 +13,20 @@ import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import { makeStyles } from '@material-ui/core/styles';
 import teal from "@material-ui/core/colors/teal";
+import Friends from "./pages/Friends/Friends";
 
 function Routes() {
   return (
     <Router>
       <Navbar />
       <Switch>
-        <Route exact path="/landing" component={Landing} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={Signup} />
-        <PrivateRoute exact path="/profile" component={Profile} />
-        <PrivateRoute exact path="/update" component={Update} />
-        <PrivateRoute path="/" component={Dashboard} />
+        <Route exact path='/landing' component={Landing} />
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/signup' component={Signup} />
+        <Route exact path='/friends' component={Friends} />
+        <PrivateRoute exact path='/profile' component={Profile} />
+        <PrivateRoute exact path='/update' component={Update} />
+        <PrivateRoute path='/' component={Dashboard} />
       </Switch>
     </Router>
   );
