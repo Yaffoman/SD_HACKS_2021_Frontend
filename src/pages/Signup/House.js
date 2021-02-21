@@ -25,6 +25,7 @@ export default function Home({ updateStore, nextStep }) {
         }}
         onSubmit={values => {
           updateStore(values);
+
           nextStep();
         }}
       >
@@ -91,7 +92,7 @@ export default function Home({ updateStore, nextStep }) {
                 color="primary"
                 onClick={submitForm}
               >
-                Next
+                Create Account
               </Button>
             </Grid>
           </>

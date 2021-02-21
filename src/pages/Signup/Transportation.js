@@ -131,10 +131,7 @@ class GridFragment extends React.Component {
 
 }
 
-
-class Page extends React.Component {
-  render() {
-
+export default function Transportation({updateStore, nextStep}) {
     return (
         <div style={{
             display: 'flex',
@@ -143,17 +140,7 @@ class Page extends React.Component {
             flexDirection: 'column',
             height: '100vh'
         }}>
-            <GridFragment />
-
-        </div>
-    );
-  }
-}
-
-export default function Transportation({updateStore, nextStep}) {
-    return (
-        <div>
-        <Page/>
+        <GridFragment />
         <Button variant="contained" color="primary" onClick={nextStep}>
             Next
         </Button>

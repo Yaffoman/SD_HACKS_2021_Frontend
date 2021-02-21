@@ -1,16 +1,9 @@
 import React from "react";
-import { Router } from "react-router-dom";
 
 import {
-  Paper,
   Grid,
   Button,
-  Card,
-  CardContent,
-  CardActions,
   Typography,
-  createMuiTheme,
-  MuiThemeProvider,
 } from "@material-ui/core";
 import teal from "@material-ui/core/colors/teal";
 import amber from "@material-ui/core/colors/amber";
@@ -36,8 +29,9 @@ const food_amounts = [
     "Amount in oz",
     "Amount in Cups",
   ];
+let food_state = {}
 
-class EmissionSource extends React.Component {
+class GridFragment extends React.Component {
   render() {
     let food_inputs = food_types.map((element, index) => {
       return (
@@ -47,13 +41,16 @@ class EmissionSource extends React.Component {
             direction="row"
             alignItems="center"
             justify="center"
+            spacing={5}
           >
-            <Grid item xs={1.8}>
+            <Grid item>
               <InputLabel htmlFor={`food_${index}`}>{element}:</InputLabel>
             </Grid>
 
-            <Grid item xs={3}>
-              <Input type={'number'} id={`food_${index}`} placeholder={food_amounts[index]}>{}</Input>
+            <Grid item>
+              <Input type={'number'} id={`food_${index}`} placeholder={food_amounts[index]} onChange={(event)=>{
+                  food_state[food_amounts[index]] = event.target.value
+              }}>{}</Input>
             </Grid>
           </Grid>
       );
@@ -78,29 +75,22 @@ class EmissionSource extends React.Component {
   }
 }
 
-class Page extends React.Component {
-  render() {
-    return (
-      <div
-        style={{
+
+export default function Transportation({ nextStep, updateStore }) {
+
+  return (
+      <div style={{
           display: "flex",
           alignItems: "center",
           justifyContent: "space-evenly",
           flexDirection: "column",
           height: "100vh",
-        }}
-      >
-        <EmissionSource title={"Food"} />
-      </div>
-    );
-  }
-}
-
-export default function Transportation({ nextStep, updateStore }) {
-  return (
-      <div>
-        <Page />
-        <Button variant="contained" color="primary" onClick={nextStep}>
+      }}>
+        <GridFragment title={"food"}/>
+        <Button variant="contained" color="primary" onClick={()=>{
+            updateStore(food_state);
+            nextStep();
+        }}>
           Next
         </Button>
       </div>
