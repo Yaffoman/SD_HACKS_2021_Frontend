@@ -36,7 +36,8 @@ const food_amounts = [
     "Amount in Cups",
   ];
 let food_state = {
-    'diet' : 'heavy_meat'
+    'diet' : 'heavy_meat',
+    'monthly_food_spending': 0
 }
 
 class GridFragment extends React.Component {

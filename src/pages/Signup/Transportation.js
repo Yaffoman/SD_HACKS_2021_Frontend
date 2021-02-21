@@ -24,11 +24,16 @@ const city_types = [
     'Suburban'
 ]
 
-let travel_state = {}
+
 let selected = car_types[0]
 let number = 0
 let carpool = false
 
+let travel_state = {
+    'flights_per_year' : 0,
+    selected : number,
+    'carpool' : carpool,
+}
 class GridFragment extends React.Component {
     state = {
         checked: true
