@@ -13,6 +13,8 @@ import Profile from './pages/Profile/Profile';
 import Navbar from './components/Navbar/Navbar';
 import { Auth } from './components/Auth/Auth';
 import Theme from './components/Theme/Theme';
+import Login from './pages/Login/Login';
+import Signup from './pages/Signup/Signup';
 
 function Routes() {
   return (
@@ -20,6 +22,8 @@ function Routes() {
       <Navbar />
       <Switch>
         <Route exact path='/landing' component={Landing} />
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/signup' component={Signup} />
         <PrivateRoute exact path='/profile' component={Profile} />
         <PrivateRoute path='/' component={Home} />
       </Switch>

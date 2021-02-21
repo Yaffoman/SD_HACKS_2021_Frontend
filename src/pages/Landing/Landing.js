@@ -2,6 +2,8 @@ import React from 'react';
 import './Landing.css';
 import {Button, Card, CardContent, CardActions, Typography} from '@material-ui/core'
 import background from "../../assets/images/homepage.png"
+import { Link as RouterLink } from 'react-router-dom';
+import Link from '@material-ui/core/Link';
 
 
 class Title extends React.Component {
@@ -21,7 +23,9 @@ class SignUp extends React.Component {
         <>
           <Button color="secondary">
             Don't have an account?&ensp;
-            <b>Sign Up</b>
+            <Link component={RouterLink} to='/signup' color="inherit">
+              <b>Signup</b>
+            </Link>
           </Button>
         </>
     );
@@ -32,13 +36,11 @@ class SignUp extends React.Component {
 class Login extends React.Component {
   render() {
     return (
-        <><Router>
-            <Link to={'/update'} className={"btn btn-primary"}>Send to update</Link>
-        </Router>
-          <Button color="primary" variant={"contained"}>
-            <b>Login Here</b>
-          </Button>
-        </>
+      <Button color="primary" variant={"contained"}>
+        <Link component={RouterLink} to='/login' color="inherit">
+          <b>Login Here</b>
+        </Link>
+      </Button>
     );
   }
 }

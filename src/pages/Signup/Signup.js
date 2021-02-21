@@ -6,11 +6,11 @@ import Button from '@material-ui/core/Button';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import styles from './Login.module.css';
+import styles from './Signup.module.css';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 
-const LoginSchema = Yup.object().shape({
+const SignupSchema = Yup.object().shape({
   username: Yup.string()
     .min(4, 'Too Short!')
     .max(50, 'Too Long!')
@@ -18,21 +18,29 @@ const LoginSchema = Yup.object().shape({
   email: Yup.string()
     .email('Invalid email')
     .required('Required'),
+  password: Yup.string()
+    .min(8, 'Too Short! You need a secure password.')
+    .max(50, 'Too Long!')
+    .required('Required'),
+  confirmPassword: Yup.string()
+    .required('Password confirmation is required')
+    .oneOf([Yup.ref('password'), null], 'Passwords must match'),
 });
 
-function LoginForm() {
+function SignupForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   return (
-    <Grid container direction={'column'} spacing={4}>
+    <Grid container direction={'column'} alignItems='center' spacing={2}>
       <Formik
         initialValues={{
           username: '',
           email: '',
+          password: '',
+          confirmPassword: '',
         }}
-        validationSchema={LoginSchema}
+        validationSchema={SignupSchema}
         onSubmit={values => {
-          console.log("HERE")
           setIsSubmitting(true);
 
           // TODO here query backend
@@ -57,7 +65,23 @@ function LoginForm() {
               fullWidth
             />
 
-            <Box mt={2}>
+            <Field
+              component={TextField}
+              name="password"
+              type="password"
+              label="Password"
+              fullWidth
+            />
+
+            <Field
+              component={TextField}
+              name="confirmPassword"
+              type="password"
+              label="Confirm Password"
+              fullWidth
+            />
+
+            <Box mt={2} style={{ width: "100%" }}>
               {isSubmitting && <LinearProgress />}
             </Box>
 
@@ -78,15 +102,15 @@ function LoginForm() {
   );
 }
 
-export default function Login() {
+export default function Signup() {
   return (
     <>
       <div className={styles.wrapper}>
-        <LoginForm />
+        <SignupForm />
 
-        <div className={styles.signUp}>
-          Or <Link component={RouterLink} to='/signup' color="inherit">
-              Signup Here
+        <div className={styles.login}>
+          Or <Link component={RouterLink} to='/login' color="inherit">
+              Login Here
             </Link>
         </div>
       </div>
