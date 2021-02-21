@@ -9,6 +9,7 @@ import {
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Home from './pages/Home/Home';
 import Landing from './pages/Landing/Landing';
+import Update from './pages/Update/Update'
 import Profile from './pages/Profile/Profile';
 import Navbar from './components/Navbar/Navbar';
 import { Auth } from './components/Auth/Auth';
@@ -25,6 +26,7 @@ function Routes() {
         <Route exact path='/login' component={Login} />
         <Route exact path='/signup' component={Signup} />
         <PrivateRoute exact path='/profile' component={Profile} />
+        <PrivateRoute exact path='/update' component={Update} />
         <PrivateRoute path='/' component={Home} />
       </Switch>
     </Router>

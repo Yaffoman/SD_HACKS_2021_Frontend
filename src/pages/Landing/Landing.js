@@ -88,13 +88,14 @@ class Page extends React.Component {
 
     return (
         <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-evenly',
-          flexDirection: 'column',
-          backgroundImage: `url(${background})`,
-          height: '100vh'
-        }}>
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-evenly',
+            flexDirection: 'column',
+            backgroundImage: `url(${background})`,
+            height: '100vh',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat'}}>
           <Title/>
           <span/>
           <span/>
@@ -106,14 +107,12 @@ class Page extends React.Component {
   }
 }
 
-class Landing extends React.Component {
-  render() {
+function Landing() {
     return (
       <div>
         <Page/>
       </div>
     );
-  }
 }
 
 
