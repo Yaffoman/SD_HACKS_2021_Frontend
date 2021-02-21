@@ -1,9 +1,9 @@
 import React from "react";
 
 import {
-  Grid,
-  Button,
-  Typography,
+    Grid,
+    Button,
+    Typography, colors,
 } from "@material-ui/core";
 import teal from "@material-ui/core/colors/teal";
 import amber from "@material-ui/core/colors/amber";
@@ -118,7 +118,7 @@ export default function Transportation({ nextStep, updateStore }) {
                       <FormControlLabel value="vegan" control={<Radio />} label="Vegan" />
                   </RadioGroup>
               </FormControl>
-          <Input startAdornment={<InputAdornment position="start">$</InputAdornment>} placeholder={"Spending per Month"} onChange={(event)=>{
+          <Input type={'number'} startAdornment={<InputAdornment position="start">$</InputAdornment>} placeholder={"Spending per Month"} onChange={(event)=>{
               food_state["monthly_food_spending"] = event.target.value
           }}/>
 
@@ -128,6 +128,8 @@ export default function Transportation({ nextStep, updateStore }) {
         }}>
           Next
         </Button>
+          <span />
+          <span />
       </div>
   );
 }

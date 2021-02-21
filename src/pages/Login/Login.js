@@ -10,6 +10,7 @@ import styles from "./Login.module.css";
 import { Link as RouterLink, useHistory } from "react-router-dom";
 import Link from "@material-ui/core/Link";
 import useAuth from "../../components/Auth/Auth";
+import background from "../../assets/images/homepage.png";
 
 const LoginSchema = Yup.object().shape({
   password: Yup.string()
@@ -104,7 +105,10 @@ function LoginForm() {
 
 export default function Login() {
   return (
-    <>
+    <div style={{backgroundImage: `url(${background})`,
+      height: '100vh',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat'}}>
       <div className={styles.wrapper}>
         <LoginForm />
 
@@ -115,6 +119,6 @@ export default function Login() {
           </Link>
         </div>
       </div>
-    </>
+    </div>
   );
 }

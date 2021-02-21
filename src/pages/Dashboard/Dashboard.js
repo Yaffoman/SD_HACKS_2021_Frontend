@@ -3,10 +3,18 @@ import PieChart from "../../components/Charts/PieChart";
 import LineChart from "../../components/Charts/LineChart";
 import { Grid, Typography } from "@material-ui/core";
 import styles from "./Dashboard.module.css";
+import { useTheme } from '@material-ui/core/styles';
+import {amber} from "@material-ui/core/colors";
+import teal from "@material-ui/core/colors/teal";
 
 export default function Dashboard() {
-  return (
-    <div>
+    const theme = useTheme();
+
+    return (
+    <div style={{
+        background: teal[50],
+        height: '100vh'
+    }}>
       <div className={styles.title}>
         <Typography variant="h3" color="primary">Your Progress</Typography>
       </div>
