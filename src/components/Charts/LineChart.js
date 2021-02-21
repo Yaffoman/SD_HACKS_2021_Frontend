@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   LineChart,
   Line,
@@ -22,6 +22,14 @@ import amber from "@material-ui/core/colors/amber";
 export default function Chart({ data }) {
   const tealColor = teal[500]
   const amberColor = amber[300]
+  const [lineKeys, setLineKeys] = useState([]);
+
+  useEffect(() => {
+    const keys = { ...data[0] };
+    delete keys.date;
+
+    setLineKeys(Object.keys(keys));
+  }, [])
 
   return (
     <LineChart
@@ -40,13 +48,15 @@ export default function Chart({ data }) {
       <YAxis />
       <Tooltip />
       <Legend />
-      <Line
-        type="monotone"
-        dataKey="You"
-        stroke={tealColor}
-        activeDot={{ r: 8 }}
-      />
-      <Line type="monotone" dataKey="National Avg" stroke={amberColor} />
+      {lineKeys.map((key) => {
+        const randomColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+        console.log(key)
+        console.log(randomColor)
+
+        return (
+        <Line type="monotone" dataKey={key} stroke={key === "You" ? tealColor : randomColor} activeDot={{r: key === "You" ? 6 : 2}} key={key} />
+          )
+      })}
     </LineChart>
   );
 }

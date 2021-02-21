@@ -49,7 +49,6 @@ function LoginForm() {
               body: JSON.stringify(values),
             }).then((response) => response.json());
 
-            console.log(data);
             const { password, email } = values;
             setUser({
               password,

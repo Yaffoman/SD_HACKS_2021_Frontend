@@ -15,7 +15,7 @@ export default function Chart ({ data, className }) {
   const amberColor = amber[300]
 
   return (
-    <PieChart width={300} height={300}>
+    <PieChart width={300} height={200}>
       <Pie
         data={data}
         dataKey="value"
